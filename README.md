@@ -20,3 +20,12 @@
   * Used `Memory Monitor` and `Heap Viewer` tool to find memory leaks
   * When you add listeners, be sure to clean them up.
   * An `Allocation Tracker` can also find memory leaks
+
+
+## TOOLS
+
+* [Systrace Walkthrough](http://developer.android.com/tools/performance/systrace/index.html)
+* [TraceView Walkthrough](http://developer.android.com/tools/performance/traceview/index.html)
+* [Memory Monitor Walkthrough](http://developer.android.com/tools/performance/memory-monitor/index.html)
+* [Heap Viewer Walkthrough](http://developer.android.com/tools/performance/heap-viewer/index.html)
+* [Allocation Tracker Walkthrough](http://developer.android.com/tools/performance/allocation-tracker/index.html)
