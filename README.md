@@ -13,3 +13,10 @@
 * container performance - dataStructure
   * used `systrace` to find performance number is milliseconds
   * replacing integer array with hashmap made the function faster
+
+## Memory
+
+* Memory Leaks
+  * Used `Memory Monitor` and `Heap Viewer` tool to find memory leaks
+  * When you add listeners, be sure to clean them up.
+  * An `Allocation Tracker` can also find memory leaks
