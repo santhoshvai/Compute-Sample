@@ -16,6 +16,7 @@
 package com.example.android.mobileperf.compute;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -39,7 +40,8 @@ public class CachingActivity extends Activity {
             public void onClick(View v) {
                 // Compute the 40th number in the fibonacci sequence, then dump to log output. Note
                 // how the UI hangs each time you do this.
-                Log.i(LOG_TAG, String.valueOf(computeFibonacci(40)));
+//                Log.i(LOG_TAG, String.valueOf(computeFibonacci(40)));
+                new computeFibonacciAsync().execute(40);
             }
         });
 
@@ -56,15 +58,30 @@ public class CachingActivity extends Activity {
      *  Why store things when you can recurse instead?  Don't let evidence, personal experience,
      *  or rational arguments from your peers fool you.  The elegant solution is the best solution.
      *
-     * @param positionInFibSequence  The position in the fibonacci sequence to return.
+     * params[0]  The position in the fibonacci sequence to return.
      * @return the nth number of the fibonacci sequence.  Seriously, try to keep up.
      */
-    public int computeFibonacci(int positionInFibSequence) {
-        if (positionInFibSequence <= 2) {
-            return 1;
-        } else {
-            return computeFibonacci(positionInFibSequence - 1)
-                    + computeFibonacci(positionInFibSequence - 2);
+    private class computeFibonacciAsync extends AsyncTask<Integer, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            int n = params[0];
+            if (n < 2) return n;
+            int firstFib = 0;
+            int secondFib = 1;
+            int currentFib = 0;
+            int i;
+            for(i=2; i<=n; i++) {
+                currentFib = firstFib + secondFib;
+                firstFib = secondFib;
+                secondFib = currentFib;
+            }
+            return currentFib;
+        }
+
+        @Override
+        protected void onPostExecute(Integer result) {
+            Log.i(LOG_TAG, String.valueOf(result));
         }
     }
 }
