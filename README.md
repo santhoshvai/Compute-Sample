@@ -1,4 +1,4 @@
-# Compute and Mempry -Sample
+# Compute and Memory -Sample
 
 ## Compute
 
@@ -21,6 +21,9 @@
   * When you add listeners, be sure to clean them up.
   * An `Allocation Tracker` can also find memory leaks
 
+* Memory chrun - lots of new allocations at same time - like in a for loop
+  * Used `systrace` to find that many GC events occurred and where the allocations happen
+  * replaced string concatenation with string buffer to fix it
 
 ## TOOLS
 
